@@ -1,0 +1,31 @@
+ini_open("alwa2_save");
+ini_section_delete("arbol");
+ini_section_delete("muro");
+ini_section_delete("casa");
+ini_section_delete("unidad");
+if(instance_number(monigote)>0){
+    ini_write_real("config","leer",1);
+    for(i=0;i<instance_number(arbol);i+=1){
+        aux=instance_find(arbol,i);
+        ini_write_real("arbol","x"+string(i),aux.x);
+        ini_write_real("arbol","y"+string(i),aux.y);}
+    for(i=0;i<instance_number(muro);i+=1){
+        aux=instance_find(muro,i);
+        ini_write_real("muro","x"+string(i),aux.x);
+        ini_write_real("muro","y"+string(i),aux.y);}
+    for(i=0;i<instance_number(casa);i+=1){
+        aux=instance_find(casa,i);
+        ini_write_real("casa","x"+string(i),aux.x);
+        ini_write_real("casa","y"+string(i),aux.y);}
+    for(i=0;i<instance_number(monigote);i+=1){
+        aux=instance_find(monigote,i);
+        ini_write_real("unidad","x"+string(i),aux.x);
+        ini_write_real("unidad","y"+string(i),aux.y);
+        ini_write_real("unidad","g"+string(i),aux.grupo);
+        ini_write_string("unidad","n"+string(i),aux.nombre);}
+    for(i=0;i<n_param;i+=1){
+        ini_write_real("parametros","p"+string(i),parametros[i]);}}
+else{
+    ini_section_delete("parametros");
+    ini_write_real("config","leer",0);}
+ini_close();

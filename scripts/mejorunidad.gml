@@ -1,0 +1,40 @@
+with(unidad){
+    mejor=0;}
+maximo=0;
+for(i=0;i<control.top_unidades;i+=1){
+    aux=instance_find(unidad,i);
+    if(aux.muertes>maximo){
+        maximo=aux.muertes;}}
+control.top_muertes=maximo;
+ganador=0;
+for(i=0;i<control.top_unidades;i+=1){
+    aux=instance_find(unidad,i);
+    if(aux.muertes=maximo){
+        if(ganador=0){
+            ganador=aux;}
+        else{
+            ganador=0;
+            break;}}}
+if(ganador>0){
+    with(ganador){
+        mejor=1;}}
+//ahora el mejor grupo:
+if(!(control.top_clanes=1 and control.existecero=1)){
+    control.grupisimo=0;
+    maximo=0;
+    for(i=0;i<control.top_clanes;i+=1){
+        aux=instance_find(clan,i);
+        if(aux.muertes>maximo){
+            maximo=aux.muertes;}}
+    control.top_matanzas=maximo;
+    ganador=0;
+    for(i=0;i<control.top_clanes;i+=1){
+        aux=instance_find(clan,i);
+        if(aux.muertes=maximo){
+            if(ganador=0){
+                ganador=aux;}
+            else{
+                ganador=0;
+                break;}}}
+    if(ganador>0){
+        control.grupisimo=ganador.grupo;}}

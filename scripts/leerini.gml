@@ -1,0 +1,40 @@
+ini_open("alwa2_save.ini");
+muestra_vidas=real(ini_read_string("config","vidas","1"));
+muestra_muertes=real(ini_read_string("config","muertes","0"));
+vision=real(ini_read_string("config","ojos","1"));
+control.muestra_mensajes=real(ini_read_string("config","mensajes","1"));
+control.idioma=real(ini_read_string("config","idioma","0"));
+control.sonido=real(ini_read_string("config","sonido","2"));
+if(!ini_key_exists("config","instalado")){//suma 1 a servidor, instalaciones
+    if(os_is_network_connected()){
+        ini_write_string("config","instalado","1");
+        http_get("http://ojorcio.000webhostapp.com/mysql_omarsauriogames.php?ff=si&game=aleatorywar&version=?&jugadores=?&puntajes=?&descargas=?&ac=?");}}
+if(real(ini_read_string("config","leer","0"))=1){
+    with(arbol){
+        x=-40;
+        instance_destroy();}
+    n=0;
+    while(ini_key_exists("arbol","x"+string(n))){
+        instance_create(real(ini_read_string("arbol","x"+string(n),"0")),
+        real(ini_read_string("arbol","y"+string(n),"0")),arbol);
+        n+=1;}
+    n=0;
+    while(ini_key_exists("muro","x"+string(n))){
+        instance_create(real(ini_read_string("muro","x"+string(n),"0")),
+        real(ini_read_string("muro","y"+string(n),"0")),muro);
+        n+=1;}
+    n=0;
+    while(ini_key_exists("casa","x"+string(n))){
+        instance_create(real(ini_read_string("casa","x"+string(n),"0")),
+        real(ini_read_string("casa","y"+string(n),"0")),casa);
+        n+=1;}
+    n=0;
+    while(ini_key_exists("unidad","x"+string(n))){
+        aux=instance_create(real(ini_read_string("unidad","x"+string(n),"0")),
+        real(ini_read_string("unidad","y"+string(n),"0")),monigote);
+        aux.grupo=real(ini_read_string("unidad","g"+string(n),"0"));
+        aux.nombre=ini_read_string("unidad","n"+string(n),"");
+        n+=1;}
+    for(n=0;n<n_param;n+=1){
+        parametros[n]=real(ini_read_string("parametros","p"+string(n),"1"));}}
+ini_close();

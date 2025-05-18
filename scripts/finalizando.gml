@@ -1,0 +1,49 @@
+var aux1;
+with(instancia){
+    aux1=instance_create(xstart,ystart,monigote);
+    aux1.nombre=nombre;
+    aux1.grupo=grupo;
+    instance_destroy();}
+with(jugador){
+    aux1=instance_create(xstart,ystart,monigote);
+    aux1.nombre=nombre;
+    aux1.grupo=grupo;
+    instance_destroy();}
+with(muriendo){
+    aux1=instance_create(xstart,ystart,monigote);
+    aux1.nombre=miunidad.nombre;
+    aux1.grupo=miunidad.grupo;
+    instance_destroy();}
+with(esqueleto){
+    aux1=instance_create(xstart,ystart,monigote);
+    aux1.nombre=nombre;
+    aux1.grupo=grupo;
+    instance_destroy();}
+with(flecha){
+    instance_destroy();}
+with(maleza){
+    instance_destroy();}
+fabrica=0;
+with(zoombie){
+    instance_destroy();}
+with(unidad){
+    instance_destroy();}
+with(clan){
+    instance_destroy();}
+with(invisible){
+    instance_destroy();}
+with(notificacion){
+    instance_destroy();}
+with(bloque){
+    visible=1;}
+raton.haymouse=0;
+control.tiempo=0;
+control.informe="";
+tile_layer_delete(p_bomba);
+tile_layer_delete(p_seniza);
+tile_layer_delete(p_sangre);
+creamundo(2);
+guardarini();
+if(control.sonido=2){
+    sound_stop(s_musica2);
+    sound_loop(s_musica1);}

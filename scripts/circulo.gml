@@ -1,0 +1,22 @@
+nn=instance_number(monigote);
+if(nn>0){
+    for(i=0;i<nn;i+=1){
+        aux=instance_find(monigote,i);
+        aux.x=0;
+        aux.y=0;}
+    for(i=0;i<nn;i+=1){
+        do{
+            aux=instance_find(monigote,irandom(nn-1));}
+        until(aux.x=0);
+        xx=room_width*0.5+lengthdir_x(room_height*0.35,(360/nn)*i);
+        yy=room_height*0.55+lengthdir_y(room_height*0.35,(360/nn)*i);
+        aux.x=xx;
+        aux.y=yy;
+        do{
+            aux=collision_circle(xx,yy,r_base1,bloque,1,1);
+            if(aux>0){
+                with(aux){
+                    instance_destroy();}}}
+        until(!collision_circle(xx,yy,r_base1,bloque,1,1));}
+    with(monigote){
+        depth=y*-10;}}

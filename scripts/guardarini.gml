@@ -1,0 +1,37 @@
+ini_open("alwa2_save.ini");
+ini_section_delete("arbol");
+ini_section_delete("muro");
+ini_section_delete("casa");
+ini_section_delete("unidad");
+ini_write_string("config","vidas",string(muestra_vidas));
+ini_write_string("config","muertes",string(muestra_muertes));
+ini_write_string("config","ojos",string(vision));
+ini_write_string("config","mensajes",string(control.muestra_mensajes));
+ini_write_string("config","idioma",string(control.idioma));
+ini_write_string("config","sonido",string(control.sonido));
+if(instance_exists(monigote)){
+    ini_write_string("config","leer","1");
+    for(i=0;i<instance_number(arbol);i+=1){
+        aux=instance_find(arbol,i);
+        ini_write_string("arbol","x"+string(i),string(aux.x));
+        ini_write_string("arbol","y"+string(i),string(aux.y));}
+    for(i=0;i<instance_number(muro);i+=1){
+        aux=instance_find(muro,i);
+        ini_write_string("muro","x"+string(i),string(aux.x));
+        ini_write_string("muro","y"+string(i),string(aux.y));}
+    for(i=0;i<instance_number(casa);i+=1){
+        aux=instance_find(casa,i);
+        ini_write_string("casa","x"+string(i),string(aux.x));
+        ini_write_string("casa","y"+string(i),string(aux.y));}
+    for(i=0;i<instance_number(monigote);i+=1){
+        aux=instance_find(monigote,i);
+        ini_write_string("unidad","x"+string(i),string(aux.x));
+        ini_write_string("unidad","y"+string(i),string(aux.y));
+        ini_write_string("unidad","g"+string(i),string(aux.grupo));
+        ini_write_string("unidad","n"+string(i),string(aux.nombre));}
+    for(i=0;i<n_param;i+=1){
+        ini_write_string("parametros","p"+string(i),string(parametros[i]));}}
+else{
+    ini_section_delete("parametros");
+    ini_write_string("config","leer","0");}
+ini_close();
